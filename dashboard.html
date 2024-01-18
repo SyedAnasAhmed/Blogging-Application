@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <style>
+        .button-92 {
+            --c: #fff;
+            /* text color */
+            background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p, 100%)/300% no-repeat,
+                rgba(44, 125, 232, 0.93);
+            /* background color */
+            color: #0000;
+            border: none;
+            transform: perspective(500px) rotateY(calc(20deg*var(--_i, -1)));
+            text-shadow: calc(var(--_i, -1)* 0.08em) -.01em 0 var(--c),
+                calc(var(--_i, -1)*-0.08em) .01em 2px #0004;
+            outline-offset: .1em;
+            transition: 0.3s;
+        }
+
+        .button-92:hover,
+        .button-92:focus-visible {
+            --_p: 0%;
+            --_i: 1;
+        }
+
+        .button-92:active {
+            text-shadow: none;
+            color: var(--c);
+            box-shadow: inset 0 0 9e9q #0005;
+            transition: 0s;
+        }
+
+        .button-92 {
+            font-weight: bold;
+            font-size: 2rem;
+            margin: 0;
+            cursor: pointer;
+            padding: .1em .3em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- //NAVBAR// -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-dark ">
+        <div class="container ">
+            <a class="navbar-brand text-white" href="#">Navbar</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse   " id="navbarNavDropdown">
+                <ul class="navbar-nav collapse navbar-collapse d-flex justify-content-end ">
+                    <li class="nav-item ">
+                        <a class="nav-link  text-white active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a class="nav-link  text-white" href="#">My Posts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Button trigger modal -->
+    <div class="d-flex justify-content-center mt-5">
+        <button type="button" class="btn btn-primary button-92" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add A Post
+        </button>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+                <div class="modal-body">
+                    <input type="text" name="" class="form-control" placeholder="Enter title of your post" id="title">
+                    <br>
+                    <textarea name="" id="desc" placeholder="Enter description of your post" class="form-control"
+                        cols="60" rows="3"></textarea>
+                    <br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="" />
+                        <label class="form-check-label" id="privatecheck" for=""><i class="fa-solid fa-lock"></i> Private Post </label>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="closebtn" onclick="createPost()" class="btn btn-primary">Upload Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="container mt-5" id="parent">
+        <!-- <div class="card">
+        <h5 class="card-header">Card Title</h5>
+        <div class="card-body">
+          <p class="card-text">Lorem seemore btn ad karna hai</p>
+          <a href="#"  class="btn btn-danger">Delete</a>
+          <a href="#" class="btn btn-warning">Edit</a>
+
+        </div>
+      </div> -->
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+<script type="module" src="dashboard.js"></script>
+
+</html>
