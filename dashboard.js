@@ -99,6 +99,9 @@ async function renderUI(title, desc, uid, id) {
 </div>`
     return cardUI;
 }
+function deleteitlater(){
+    console.log("delete it later")
+}
 
 myModal.hide()
 
