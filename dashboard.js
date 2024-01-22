@@ -9,14 +9,24 @@ import {
     doc,
 } from " https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// var firebaseConfig = {
+//     apiKey: "AIzaSyDlwhX4eNkdzf7E69MynVk0I4JpGvwVADQ",
+//     authDomain: "my-first-project-d261e.firebaseapp.com",
+//     projectId: "my-first-project-d261e",
+//     storageBucket: "my-first-project-d261e.appspot.com",
+//     messagingSenderId: "392372615722",
+//     appId: "1:392372615722:web:ddc5c367d69ad917252153"
+// };
+
 var firebaseConfig = {
-    apiKey: "AIzaSyDlwhX4eNkdzf7E69MynVk0I4JpGvwVADQ",
-    authDomain: "my-first-project-d261e.firebaseapp.com",
-    projectId: "my-first-project-d261e",
-    storageBucket: "my-first-project-d261e.appspot.com",
-    messagingSenderId: "392372615722",
-    appId: "1:392372615722:web:ddc5c367d69ad917252153"
+    apiKey: "AIzaSyBK-FPKedLWVe3LpAWCI5sj671ZZrGfHIw",
+    authDomain: "blogging-app-new-keys.firebaseapp.com",
+    projectId: "blogging-app-new-keys",
+    storageBucket: "blogging-app-new-keys.appspot.com",
+    messagingSenderId: "317336614008",
+    appId: "1:317336614008:web:d82b46610fd37cb71de98d"
 };
+
 
 var app = initializeApp(firebaseConfig);
 
@@ -44,15 +54,28 @@ window.addEventListener("load", async function (doc) {
             title: doc.data().title,
             desc: doc.data().desc,
             uid: doc.data().uid,
-            privatecheck: doc.data().privatecheck,
+            isprivate: doc.data().isprivate,
         })
     })
-    console.log(value.privatecheck)
+    // console.log(value.privatecheck)
     for (var value of postarray) {
-        parent.innerHTML += await renderUI(
-            value.title,
-            value.desc,
+        if (value.isprivate) {
+            if (value.uid === uid) {
+
+                parent.innerHTML += await renderUI(
+                    value.title,
+                    value.desc,
+                    value.isprivate
+                )
+            }
+        }
+        else {
+            parent.innerHTML += await renderUI(
+                value.title,
+                value.desc,
+                value.isprivate
             )
+        }
     }
 
 })
@@ -61,29 +84,33 @@ async function createPost() {
     var title = document.getElementById("title");
     var desc = document.getElementById("desc");
     var uid = localStorage.getItem("uid");
+    var privatePost = document.getElementById("privatepost").checked;
+    // console.log( privatePost ) 
+
 
     var blogObj = {
         title: title.value,
         desc: desc.value,
         uid: uid,
+        isprivate: privatePost,
     }
 
     const docRef = await addDoc(collection(db, "posts"), blogObj);
-    console.log("docref ", docRef);
+    // console.log("docref ", docRef);
 
     parent.innerHTML += await renderUI(
         title.value,
         desc.value,
+        privatePost
     )
-    // console.log(desc.value.length)
-    
-    // }
+
     myModal.hide();
     title.value = "";
     desc.value = "";
 }
 
-async function renderUI(title, desc, uid, id) {
+function renderUI(title, desc, uid, id ,isprivate  ) {
+        console.log(isprivate)
     var cardUI = `<div class="container mt-5" >
 
     <div class="card">
@@ -99,11 +126,7 @@ async function renderUI(title, desc, uid, id) {
 </div>`
     return cardUI;
 }
-function deleteitlater(){
-    console.log("delete it later")
-}
 
-myModal.hide()
 
 async function deletePost(ele) {
     var postId = ele.id;
@@ -113,6 +136,7 @@ async function deletePost(ele) {
 
 
 
+myModal.hide()
 
 
 
