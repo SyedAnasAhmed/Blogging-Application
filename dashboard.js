@@ -128,13 +128,6 @@ function renderUI(title, desc, uid, id ,isprivate  ) {
 }
 
 
-async function deletePost(ele) {
-    var postId = ele.id;
-    await deleteDoc(doc(db, "posts", postId));
-    console.log("delete");
-}
-
-
 
 myModal.hide()
 
